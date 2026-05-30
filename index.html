@@ -339,7 +339,7 @@
         }
         .step:hover .step-num { transform: scale(1.2) rotate(10deg); color: #fff; }
 
-        /* ONS WERK - KINEMATOGRAFICZNA GALERIA */
+        /* ONS WERK */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 35px; }
         .gallery-item {
             background: var(--card-bg);
@@ -369,105 +369,65 @@
         .gallery-static-info { padding: 20px; }
         .gallery-static-info h3 { color: var(--accent-green); font-size: 1.3rem; margin-bottom: 5px; font-weight: 800; }
 
-        /* SEKCJA RECENZJI GOOGLE MAPS */
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
-        }
-        .review-card {
+        /* SEKCJA ZACHĘTY DO OPINII GOOGLE MAPS (ZAMIAST TEKSTÓW) */
+        .google-reviews-box {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 25px var(--shadow-color);
-            position: relative;
-        }
-        .review-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 15px;
-        }
-        .reviewer-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .reviewer-avatar {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background-color: var(--accent-green);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-        .reviewer-name {
-            font-weight: 700;
-            font-size: 1.05rem;
-        }
-        .review-stars {
-            color: #ffc107;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-        .review-text {
-            font-size: 0.98rem;
-            color: var(--text-color);
-            font-style: italic;
-        }
-        .google-icon {
-            width: 20px;
-            height: 20px;
-        }
-
-        /* SEKCJA FAQ (AKORDEON) */
-        .faq-container {
-            max-width: 850px;
+            border-radius: 28px;
+            padding: 50px 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px var(--shadow-color);
+            max-width: 700px;
             margin: 0 auto;
         }
-        .faq-item {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
+        .google-reviews-box h3 {
+            font-size: 1.8rem;
+            font-weight: 900;
             margin-bottom: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px var(--shadow-color);
+            color: var(--text-color);
         }
-        .faq-question {
-            padding: 22px;
-            font-weight: 700;
-            font-size: 1.15rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            user-select: none;
-            color: var(--accent-green);
+        .google-stars {
+            color: #ffc107;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
         }
-        [data-theme="dark"] .faq-question { color: var(--text-color); }
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            padding: 0 22px;
+        .google-reviews-box p {
+            font-size: 1.1rem;
             color: var(--sub-text);
-            font-size: 1.02rem;
-            transition: max-height 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), padding 0.35s ease;
+            margin-bottom: 30px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        .faq-item.active .faq-answer {
-            padding-bottom: 22px;
+        .btn-google-review {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: #ffffff;
+            color: #1f2937;
+            border: 2px solid #e5e7eb;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
-        .faq-icon {
-            font-size: 1.3rem;
-            transition: transform 0.3s ease;
+        [data-theme="dark"] .btn-google-review {
+            background: #2d3748;
+            color: #ffffff;
+            border-color: #4a5568;
         }
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
+        .btn-google-review:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            border-color: var(--accent-orange);
+        }
+        .google-btn-icon {
+            width: 24px;
+            height: 24px;
         }
 
         /* LIGHTBOX */
@@ -627,7 +587,6 @@
                 <li><a href="#werkwijze" onclick="closeMobileMenu()">Werkwijze</a></li>
                 <li><a href="#ons-werk" onclick="closeMobileMenu()">Ons Werk</a></li>
                 <li><a href="#reviews" onclick="closeMobileMenu()">Reviews</a></li>
-                <li><a href="#faq" onclick="closeMobileMenu()">FAQ</a></li>
                 <li><button class="theme-toggle" id="themeToggle" title="Verander thema">🌙</button></li>
                 <li><a href="#contact" class="nav-btn" onclick="closeMobileMenu()">Offerte Aanvragen</a></li>
             </ul>
@@ -647,7 +606,7 @@
             <p class="section-subtitle">Betrouwbaarheid en pure kwaliteit in Berkel en Rodenrijs</p>
             <div class="about-card">
                 <p>
-                    Wij zijn een ervaren en betrouwbaar schildersbedrijf gevestigd in Berkel en Rodenrijs. Met ruim 25 jaar ervaring verzorgen wij hoogwaardig schilder- en onderhoudswerk voor villa’s, eengezinswoningen, VvE’s and monumentale panden.
+                    Wij zijn een ervaren i betrouwbaar schildersbedrijf gevestigd in Berkel en Rodenrijs. Met ruim 25 jaar ervaring verzorgen wij hoogwaardig schilder- en onderhoudswerk voor villa’s, eengezinswoningen, VvE’s en monumentale panden.
                 </p>
                 <div class="stats-grid">
                     <div class="stat-item"><h4><span class="counter" data-target="25">0</span>+</h4><p>Jaar Ervaring</p></div>
@@ -668,7 +627,7 @@
                 </div>
                 <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                     <h3>🎨 Binnenschilderwerk</h3>
-                    <p>Strak en nauwkeurig schilderwerk voor wanden, plafonds, binnenkozijnen en trappen.</p>
+                    <p>Strak en nauwkeurig schilderwerk voor wanden, plafonds, binnenkozijnen u trappen.</p>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-aos-delay="150">
                     <h3>📄 Behang- & Stucwerk</h3>
@@ -680,7 +639,7 @@
                 </div>
                 <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                     <h3>🪵 Houtreparatie</h3>
-                    <p>Herstel van houtrot i vakkundige aanpassingen om uw houtwerk in topconditie te houden.</p>
+                    <p>Herstel van houtrot en vakkundige aanpassingen om uw houtwerk in topconditie te houden.</p>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-aos-delay="150">
                     <h3>🚪 Ramen & Deuren</h3>
@@ -738,78 +697,17 @@
         </section>
 
         <section id="reviews" data-aos="fade-up">
-            <h2>Wat Klanten Zeggen</h2>
-            <p class="section-subtitle">Beoordeeld met 5 sterren op Google Maps</p>
-            <div class="reviews-grid">
+            <h2>Klantbeoordelingen</h2>
+            <p class="section-subtitle">Wat onze klanten over ons zeggen op Google</p>
+            <div class="google-reviews-box">
+                <h3>Bekijk onze Google Reviews</h3>
+                <div class="google-stars">★★★★★</div>
+                <p>We streven altijd naar de hoogste kwaliteit en 100% tevredenheid. Benieuwd naar de ervaringen van anderen, of wilt u zelf een beoordeling achterlaten? Klik op de onderstaande knop.</p>
                 
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="reviewer-info">
-                            <div class="reviewer-avatar">M</div>
-                            <div>
-                                <div class="reviewer-name">Mark de Vries</div>
-                                <div style="font-size: 0.8rem; color: var(--sub-text);">Lokaal gids • Berkel</div>
-                            </div>
-                        </div>
-                        <svg class="google-icon" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v3.92h6.61c-.29 1.53-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.65-5.17 3.65-8.58z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.11 0-5.74-2.11-6.68-4.96H1.21v3.15C3.18 21.88 7.31 24 12 24z"/><path fill="#FBBC05" d="M5.32 14.24c-.24-.72-.38-1.5-.38-2.3a7.83 7.83 0 0 1 .38-2.3V6.49H1.21A11.94 11.94 0 0 0 0 12c0 1.97.48 3.83 1.21 5.51l4.11-3.27z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.18 2.12 1.21 5.51l4.11 3.27c.94-2.85 3.57-4.96 6.68-4.96z"/></svg>
-                    </div>
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Tom en zijn team hebben ons hele huis aan de buitenkant geschilderd. Alles ziet er weer strak uit. Ze werken ontzettend netjes en ruimen alles op. Aanrader!"</p>
-                </div>
-
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="reviewer-info">
-                            <div class="reviewer-avatar" style="background-color: #dd6b20;">S</div>
-                            <div>
-                                <div class="reviewer-name">Sandra Bakker</div>
-                                <div style="font-size: 0.8rem; color: var(--sub-text);">Berkel en Rodenrijs</div>
-                            </div>
-                        </div>
-                        <svg class="google-icon" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v3.92h6.61c-.29 1.53-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.65-5.17 3.65-8.58z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.11 0-5.74-2.11-6.68-4.96H1.21v3.15C3.18 21.88 7.31 24 12 24z"/><path fill="#FBBC05" d="M5.32 14.24c-.24-.72-.38-1.5-.38-2.3a7.83 7.83 0 0 1 .38-2.3V6.49H1.21A11.94 11.94 0 0 0 0 12c0 1.97.48 3.83 1.21 5.51l4.11-3.27z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.18 2.12 1.21 5.51l4.11 3.27c.94-2.85 3.57-4.96 6.68-4.96z"/></svg>
-                    </div>
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Zeer tevreden over het binnenschilderwerk en behangen van onze nieuwe woning. Snel een duidelijke offerte gekregen en de afspraken zijn perfect nagekomen."</p>
-                </div>
-
-            </div>
-        </section>
-
-        <section id="faq" data-aos="fade-up">
-            <h2>Veelgestelde Vragen (FAQ)</h2>
-            <p class="section-subtitle">Alles wat u moet weten over onze schilderdiensten</p>
-            <div class="faq-container">
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Welke merken verf gebruiken jullie?</span>
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Wij werken uitsluitend met hoogwaardige professionele verfmerken zoals Sikkens, Sigma en Wijzonol. Dit garandeert een langdurige bescherming en een prachtig strak eindresultaat.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Hoe snel kan ik een offerte ontvangen?</span>
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Wanneer u het formulier invult of contact met ons opneemt, reageren wij meestal binnen 24 tot 48 uur. Indien nodig komen we gratis langs in Berkel en Rodenrijs om het werk op te meten.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Zit er garantie op het schilderwerk?</span>
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Ja, kwaliteit staat bij ons voorop. Op buitenschilderwerk geven wij (afhankelijk van de ondergrond) tot wel 10 jaar garantie. Op binnenschilderwerk heeft u standaard volledige garantie.</p>
-                    </div>
-                </div>
-
+                <a href="https://www.google.com/search?q=Schildersbedrijf+Berkel+en+Rodenrijs#lrd=0x0:0x0,3" target="_blank" class="btn-google-review">
+                    <svg class="google-btn-icon" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v3.92h6.61c-.29 1.53-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.65-5.17 3.65-8.58z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.11 0-5.74-2.11-6.68-4.96H1.21v3.15C3.18 21.88 7.31 24 12 24z"/><path fill="#FBBC05" d="M5.32 14.24c-.24-.72-.38-1.5-.38-2.3a7.83 7.83 0 0 1 .38-2.3V6.49H1.21A11.94 11.94 0 0 0 0 12c0 1.97.48 3.83 1.21 5.51l4.11-3.27z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.18 2.12 1.21 5.51l4.11 3.27c.94-2.85 3.57-4.96 6.68-4.96z"/></svg>
+                    <span>Lees of Schrijf een Review</span>
+                </a>
             </div>
         </section>
 
@@ -935,29 +833,6 @@
         function closeModal(e, force = false) {
             if (e.target === contactModal || force) { contactModal.classList.remove('active'); }
         }
-
-        // Akordeon FAQ
-        const faqQuestions = document.querySelectorAll('.faq-question');
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
-                const item = question.parentElement;
-                const answer = item.querySelector('.faq-answer');
-                
-                if (item.classList.contains('active')) {
-                    answer.style.maxHeight = '0';
-                    item.classList.remove('active');
-                } else {
-                    // Zamknij inne otwarte pytania (opcjonalne, dla lepszego UX)
-                    document.querySelectorAll('.faq-item.active').forEach(activeItem => {
-                        activeItem.querySelector('.faq-answer').style.maxHeight = '0';
-                        activeItem.classList.remove('active');
-                    });
-                    
-                    item.classList.add('active');
-                    answer.style.maxHeight = answer.scrollHeight + 'px';
-                }
-            });
-        });
 
         // Animowany licznik w sekcji "Over Ons"
         const counters = document.querySelectorAll('.counter');
