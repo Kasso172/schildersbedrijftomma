@@ -212,7 +212,7 @@
             border-color: #2f855a;
         }
         .stat-item h4 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: #276749;
             font-weight: 800;
         }
@@ -260,7 +260,7 @@
             margin-top: 10px;
         }
 
-        /* WERKWIJZE (Klasyczny układ boksów) */
+        /* WERKWIJZE */
         .process-box {
             background: #276749;
             color: white;
@@ -298,7 +298,7 @@
             margin-bottom: 10px;
         }
 
-        /* ONS WERK Z INTERAKTYWNĄ GALERIĄ */
+        /* ONS WERK / GALERIA */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -332,45 +332,20 @@
             color: #68d391;
         }
 
-        /* ELEMENTY SYSTEMU LIGHTBOX (ZDJĘCIE NA PEŁEN EKRAN) */
+        /* LIGHTBOX */
         .lightbox {
             display: none;
             position: fixed;
             z-index: 2000;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background-color: rgba(0, 0, 0, 0.9);
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 0.3s ease;
         }
-        .lightbox.active {
-            display: flex;
-            opacity: 1;
-        }
-        .lightbox-img {
-            max-width: 90%;
-            max-height: 85%;
-            border-radius: 8px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
-            transform: scale(0.95);
-            transition: transform 0.3s ease;
-        }
-        .lightbox.active .lightbox-img {
-            transform: scale(1);
-        }
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: #fff;
-            font-size: 3rem;
-            font-weight: bold;
-            cursor: pointer;
-        }
+        .lightbox.active { display: flex; opacity: 1; }
+        .lightbox-img { max-width: 90%; max-height: 85%; border-radius: 8px; box-shadow: 0 5px 25px rgba(0,0,0,0.5); transform: scale(0.95); transition: transform 0.3s ease; }
+        .lightbox.active .lightbox-img { transform: scale(1); }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 3rem; font-weight: bold; cursor: pointer; }
 
         /* CONTACT */
         .contact-box {
@@ -442,6 +417,68 @@
         }
         .btn-submit:hover { background: #c05621; }
 
+        /* PŁYWAJĄCY PRZYCISK TELEFONU & MODAL */
+        .floating-call-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background-color: #dd6b20;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 15px rgba(221, 107, 32, 0.5);
+            cursor: pointer;
+            z-index: 999;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(221, 107, 32, 0.7); }
+            70% { transform: scale(1.08); box-shadow: 0 0 0 15px rgba(221, 107, 32, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(221, 107, 32, 0); }
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 1001;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .quick-modal {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid var(--card-border);
+        }
+        .quick-modal h3 { color: #276749; font-size: 1.6rem; margin-bottom: 15px; }
+        [data-theme="dark"] .quick-modal h3 { color: #68d391; }
+        .quick-modal p { margin-bottom: 25px; color: var(--text-color); }
+        .modal-call-btn {
+            display: inline-block;
+            background: #dd6b20;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        .modal-close { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: var(--sub-text); }
+
         /* STOPKA */
         footer {
             text-align: center;
@@ -486,14 +523,14 @@
 
         <section id="over-ons" data-aos="fade-up">
             <h2>Over Ons Bedrijf</h2>
-            <p class="section-subtitle">Betrouwbaarheid en pure kwaliteit in Berkel en Rodenrijs</p>
+            <p class="section-subtitle">Betrouwbaarheid i pure kwaliteit in Berkel en Rodenrijs</p>
             <div class="about-card">
                 <p>
-                    Wij zijn een ervaren en betrouwbaar schildersbedrijf gevestigd in Berkel en Rodenrijs. Met ruim 25 jaar ervaring verzorgen wij hoogwaardig schilder- en onderhoudswerk voor villa’s, eengezinswoningen, VvE’s en monumentale panden.
+                    Wij zijn een ervaren en betrouwbaar schildersbedrijf gevestigd in Berkel en Rodenrijs. Met ruim 25 jaar ervaring verzorgen wij hoogwaardig schilder- en onderhoudswerk voor villa’s, eengezinswoningen, VvE’s i monumentale panden.
                 </p>
                 <div class="stats-grid">
-                    <div class="stat-item"><h4>25+</h4><p>Jaar Ervaring</p></div>
-                    <div class="stat-item"><h4>100%</h4><p>Tevredenheid</p></div>
+                    <div class="stat-item"><h4><span class="counter" data-target="25">0</span>+</h4><p>Jaar Ervaring</p></div>
+                    <div class="stat-item"><h4><span class="counter" data-target="100">0</span>%</h4><p>Tevredenheid</p></div>
                     <div class="stat-item"><h4>Top Kwaliteit</h4><p>Gegarandeerd</p></div>
                 </div>
             </div>
@@ -505,7 +542,7 @@
             <div class="services-grid">
                 <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                     <h3>🏡 Buitenschilderwerk</h3>
-                    <p>Duurzame bescherming van uw gevels, ramen en kozijnen tegen alle Nederlandse weersinvloeden.</p>
+                    <p>Duurzame bescherming van uw gevels, ramen i kozijnen tegen alle Nederlandse weersinvloeden.</p>
                     <span class="warranty-tag">Tot 10 jaar garantie mogelijk</span>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-aos-delay="200">
@@ -537,7 +574,7 @@
                 <div class="steps-grid">
                     <div class="step"><div class="step-num">1</div><h4>Aanvraag</h4><p>U neemt contact op en we bespreken uw wensen.</p></div>
                     <div class="step"><div class="step-num">2</div><h4>Offerte</h4><p>U ontvangt een heldere, vrijblijvende prijsopgave.</p></div>
-                    <div class="step"><div class="step-num">3</div><h4>Uitvoering</h4><p>Wij werken netjes, vakkundig i strak op planning.</p></div>
+                    <div class="step"><div class="step-num">3</div><h4>Uitvoering</h4><p>Wij werken netjes, vakkundig en strak op planning.</p></div>
                     <div class="step"><div class="step-num">4</div><h4>Oplevering</h4><p>Gezamenlijke controle voor een 100% topresultaat.</p></div>
                 </div>
             </div>
@@ -617,6 +654,17 @@
 
     </div>
 
+    <div class="floating-call-btn" onclick="openModal()" title="Snel bellen">📞</div>
+
+    <div class="modal-overlay" id="contactModal" onclick="closeModal(event)">
+        <div class="quick-modal">
+            <span class="modal-close" onclick="closeModal(event, true)">&times;</span>
+            <h3>Snel een offerte?</h3>
+            <p>Wilt u direct een schilder spreken en uw wensen bespreken? Bel ons nu op voor een snelle prijsindicatie!</p>
+            <a href="tel:+31654967900" class="modal-call-btn">📞 Bel +31 654 967 900</a>
+        </div>
+    </div>
+
     <footer>
         <p>© 2026 Schildersbedrijf Berkel en Rodenrijs. Alle rechten voorbehouden.</p>
     </footer>
@@ -624,10 +672,7 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         // Inicjalizacja animacji AOS
-        AOS.init({
-            duration: 800, // czas trwania animacji w ms
-            once: true // animacja wykona się tylko raz przy pierwszym przewinięciu
-        });
+        AOS.init({ duration: 800, once: true });
 
         // Obsługa przełączania motywu Dark Mode
         const themeToggle = document.getElementById('themeToggle');
@@ -645,15 +690,49 @@
         // Obsługa interaktywnej galerii Lightbox
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
-
         function openLightbox(imgUrl) {
             lightboxImg.src = imgUrl;
             lightbox.classList.add('active');
         }
-
         function closeLightbox() {
             lightbox.classList.remove('active');
         }
+
+        // Obsługa wyskakującego okienka (Modal)
+        const contactModal = document.getElementById('contactModal');
+        function openModal() { contactModal.classList.add('active'); }
+        function closeModal(e, force = false) {
+            if (e.target === contactModal || force) { contactModal.classList.remove('active'); }
+        }
+
+        // Animowany licznik w sekcji Over Ons
+        const counters = document.querySelectorAll('.counter');
+        const speed = 60;
+        const startCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / speed;
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 25);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        const sectionOverOns = document.getElementById('over-ons');
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                startCounters();
+                observer.disconnect();
+            }
+        }, { threshold: 0.2 });
+        observer.observe(sectionOverOns);
     </script>
 </body>
 </html>
