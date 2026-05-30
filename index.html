@@ -139,6 +139,21 @@
             margin-bottom: 35px;
             text-shadow: 0 2px 10px rgba(0,0,0,0.8);
         }
+        .btn-main {
+            display: inline-block;
+            background-color: #dd6b20;
+            color: #ffffff;
+            padding: 14px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 14px rgba(221, 107, 32, 0.4);
+            transition: all 0.3s ease;
+        }
+        .btn-main:hover {
+            background-color: #c05621;
+            transform: translateY(-2px);
+        }
 
         /* SEKCJE */
         .container {
@@ -197,12 +212,15 @@
             border-color: #2f855a;
         }
         .stat-item h4 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: #276749;
             font-weight: 800;
         }
         [data-theme="dark"] .stat-item h4 {
             color: #9ae6b4;
+        }
+        [data-theme="dark"] .stat-item p {
+            color: #e2e8f0;
         }
 
         /* DIENSTEN */
@@ -216,7 +234,12 @@
             padding: 35px;
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s ease;
             border: 1px solid var(--card-border);
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #dd6b20;
         }
         .service-card h3 {
             margin-bottom: 12px;
@@ -237,7 +260,7 @@
             margin-top: 10px;
         }
 
-        /* WERKWIJZE */
+        /* WERKWIJZE (Klasyczny układ boksów) */
         .process-box {
             background: #276749;
             color: white;
@@ -261,8 +284,13 @@
             border-radius: 12px;
             text-align: center;
         }
-        .step h4 { color: #ffffff; margin-bottom: 5px; }
-        .step p { color: #e2e8f0; }
+        .step h4 {
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+        .step p {
+            color: #e2e8f0;
+        }
         .step-num {
             font-size: 2rem;
             font-weight: 800;
@@ -270,30 +298,10 @@
             margin-bottom: 10px;
         }
 
-        /* GALERIA Z FILTROWANIEM */
-        .filter-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 35px;
-        }
-        .filter-btn {
-            background: var(--card-bg);
-            color: var(--text-color);
-            border: 2px solid #276749;
-            padding: 10px 25px;
-            border-radius: 50px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .filter-btn.active, .filter-btn:hover {
-            background: #276749;
-            color: white;
-        }
+        /* ONS WERK Z INTERAKTYWNĄ GALERIĄ */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
         .gallery-item {
@@ -308,26 +316,63 @@
             height: 320px;
             background-size: cover;
             background-position: center;
+            transition: transform 0.3s ease;
         }
-        .gallery-info { padding: 20px; }
-        .gallery-info h3 { color: #276749; margin-bottom: 8px; }
-        [data-theme="dark"] .gallery-info h3 { color: #68d391; }
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.03);
+        }
+        .gallery-info {
+            padding: 20px;
+        }
+        .gallery-info h3 {
+            color: #276749;
+            margin-bottom: 8px;
+        }
+        [data-theme="dark"] .gallery-info h3 {
+            color: #68d391;
+        }
 
-        /* LIGHTBOX SYSTEM */
+        /* ELEMENTY SYSTEMU LIGHTBOX (ZDJĘCIE NA PEŁEN EKRAN) */
         .lightbox {
             display: none;
             position: fixed;
             z-index: 2000;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-color: rgba(0, 0, 0, 0.9);
-            justify-content: center; align-items: center;
-            opacity: 0; transition: opacity 0.3s ease;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
-        .lightbox.active { display: flex; opacity: 1; }
-        .lightbox-img { max-width: 90%; max-height: 85%; border-radius: 8px; }
-        .lightbox-close { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 3rem; cursor: pointer; }
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 85%;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        .lightbox.active .lightbox-img {
+            transform: scale(1);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 3rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
-        /* CONTACT & CONTACT BOX */
+        /* CONTACT */
         .contact-box {
             background: var(--card-bg);
             border-radius: 24px;
@@ -343,96 +388,74 @@
             color: white;
             padding: 40px;
             border-radius: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
         }
-        .contact-sidebar h3 { font-size: 1.8rem; margin-bottom: 5px; color: #feebc8; }
-        .info-link { color: #fff; text-decoration: none; font-weight: 600; }
+        .contact-sidebar h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #feebc8;
+        }
+        .info-link {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+        }
         .info-link:hover { color: #feebc8; }
          
-        .contact-form { display: flex; flex-direction: column; gap: 15px; }
-        .form-group { display: flex; flex-direction: column; gap: 5px; }
-        .form-group label { font-size: 0.9rem; font-weight: 600; color: var(--text-color); }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .form-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
         .form-group input, .form-group textarea, .form-group select {
-            padding: 12px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 1rem;
-            background-color: var(--bg-color); color: var(--text-color);
+            padding: 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: #276749;
+            box-shadow: 0 0 0 3px rgba(39, 103, 73, 0.1);
         }
         .btn-submit {
-            background: #dd6b20; color: white; border: none; padding: 14px;
-            border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer;
+            background: #dd6b20;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
         }
         .btn-submit:hover { background: #c05621; }
 
-        /* PRZYCISK PŁYWAJĄCY I OKNO MODAL SZYBKIEGO KONTAKTU */
-        .floating-call-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 65px;
-            height: 65px;
-            background-color: #dd6b20;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.8rem;
-            box-shadow: 0 4px 15px rgba(221, 107, 32, 0.5);
-            cursor: pointer;
-            z-index: 999;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(221, 107, 32, 0.7); }
-            70% { transform: scale(1.08); box-shadow: 0 0 0 15px rgba(221, 107, 32, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(221, 107, 32, 0); }
-        }
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6);
-            z-index: 1001;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .modal-overlay.active { display: flex; opacity: 1; }
-        .quick-modal {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 20px;
-            max-width: 450px;
-            width: 90%;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            border: 1px solid var(--card-border);
-        }
-        .quick-modal h3 { color: #276749; font-size: 1.6rem; margin-bottom: 15px; }
-        [data-theme="dark"] .quick-modal h3 { color: #68d391; }
-        .quick-modal p { margin-bottom: 25px; color: var(--text-color); }
-        .modal-call-btn {
-            display: inline-block;
-            background: #dd6b20;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 700;
-            text-decoration: none;
-            font-size: 1.2rem;
-        }
-        .modal-close { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: var(--sub-text); }
-
         /* STOPKA */
-        footer { text-align: center; padding: 30px; background-color: #1c4d35; color: #a0aec0; font-size: 0.95rem; }
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #1c4d35;
+            color: #a0aec0;
+            font-size: 0.95rem;
+        }
 
+        /* RESPONSYWNOŚĆ */
         @media (max-width: 850px) {
             body { padding-top: 130px; }
-            .nav-container { flex-direction: column; gap: 15px; }
-            .contact-box { grid-template-columns: 1fr; }
+            .nav-container { flex-direction: column; gap: 15px; text-align: center; }
+            .contact-box { grid-template-columns: 1fr; padding: 20px; }
             header h1 { font-size: 2.2rem; }
         }
     </style>
@@ -456,7 +479,7 @@
     <header>
         <h1>Uw lokale schildersbedrijf uit Berkel en Rodenrijs</h1>
         <p>Vakmanschap met 25 jaar ervaring</p>
-        <a href="#contact" class="nav-btn" style="padding: 14px 35px; font-size: 1.1rem; text-decoration: none;">Vrijblijvende Offerte</a>
+        <a href="#contact" class="btn-main">Vrijblijvende Offerte</a>
     </header>
 
     <div class="container">
@@ -469,9 +492,9 @@
                     Wij zijn een ervaren en betrouwbaar schildersbedrijf gevestigd in Berkel en Rodenrijs. Met ruim 25 jaar ervaring verzorgen wij hoogwaardig schilder- en onderhoudswerk voor villa’s, eengezinswoningen, VvE’s en monumentale panden.
                 </p>
                 <div class="stats-grid">
-                    <div class="stat-item"><h4><span class="counter" data-target="25">0</span>+</h4><p>Jaar Ervaring</p></div>
-                    <div class="stat-item"><h4><span class="counter" data-target="100">0</span>%</h4><p>Tevredenheid</p></div>
-                    <div class="stat-item"><h4>Top</h4><p>Kwaliteit Gegarandeerd</p></div>
+                    <div class="stat-item"><h4>25+</h4><p>Jaar Ervaring</p></div>
+                    <div class="stat-item"><h4>100%</h4><p>Tevredenheid</p></div>
+                    <div class="stat-item"><h4>Top Kwaliteit</h4><p>Gegarandeerd</p></div>
                 </div>
             </div>
         </section>
@@ -482,7 +505,7 @@
             <div class="services-grid">
                 <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                     <h3>🏡 Buitenschilderwerk</h3>
-                    <p>Duurzame bescherming van uw gevels, ramen i kozijnen tegen alle Nederlandse weersinvloeden.</p>
+                    <p>Duurzame bescherming van uw gevels, ramen en kozijnen tegen alle Nederlandse weersinvloeden.</p>
                     <span class="warranty-tag">Tot 10 jaar garantie mogelijk</span>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-aos-delay="200">
@@ -493,6 +516,18 @@
                     <h3>📄 Behang- & Stucwerk</h3>
                     <p>Professionele wandafwerking voor perfect egale en prachtig afgewerkte muren.</p>
                 </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>💎 Glaswerk</h3>
+                    <p>Levering en vakkundige plaatsing van diverse soorten moderne isolatie- en HR++ glas.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>🪵 Houtreparatie & Timmerwerk</h3>
+                    <p>Herstel van houtrot en vakkundige aanpassingen om uw houtwerk in topconditie te houden.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3>🚪 Ramen & Deuren</h3>
+                    <p>Grondig onderhoud, strak schilderwerk en het perfect afstellen van al uw hang- en sluitwerk.</p>
+                </div>
             </div>
         </section>
 
@@ -502,7 +537,7 @@
                 <div class="steps-grid">
                     <div class="step"><div class="step-num">1</div><h4>Aanvraag</h4><p>U neemt contact op en we bespreken uw wensen.</p></div>
                     <div class="step"><div class="step-num">2</div><h4>Offerte</h4><p>U ontvangt een heldere, vrijblijvende prijsopgave.</p></div>
-                    <div class="step"><div class="step-num">3</div><h4>Uitvoering</h4><p>Wij werken netjes, vakkundig en strak op planning.</p></div>
+                    <div class="step"><div class="step-num">3</div><h4>Uitvoering</h4><p>Wij werken netjes, vakkundig i strak op planning.</p></div>
                     <div class="step"><div class="step-num">4</div><h4>Oplevering</h4><p>Gezamenlijke controle voor een 100% topresultaat.</p></div>
                 </div>
             </div>
@@ -510,29 +545,22 @@
 
         <section id="ons-werk">
             <h2>Ons Recente Werk</h2>
-            <p class="section-subtitle">Bekijk hieronder onze afgewerkte en gefilterde projecten</p>
-
-            <div class="filter-buttons" data-aos="fade-up">
-                <button class="filter-btn active" onclick="filterGallery('all')">Alle</button>
-                <button class="filter-btn" onclick="filterGallery('binnen')">Binnen</button>
-                <button class="filter-btn" onclick="filterGallery('buiten')">Buiten</button>
-            </div>
-
+            <p class="section-subtitle">Een greep uit onze gerealiseerde projecten (Klik op een foto voor grotere weergave)</p>
             <div class="gallery-grid">
                 
-                <div class="gallery-item" data-category="buiten" data-aos="zoom-in" onclick="openLightbox('./image_4c7484.jpg')">
-                    <div class="gallery-img" style="background-image: url('./image_4c7484.jpg')"></div>
+                <div class="gallery-item" data-aos="fade-right" onclick="openLightbox('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80')">
+                    <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80')"></div>
                     <div class="gallery-info">
                         <h3>Buitenschilderwerk</h3>
-                        <p>Grondige gevelrenovatie en strak lakwerk voor kozijnen.</p>
+                        <p>Volledig onderhoud, reiniging en professioneel lakwerk van kozijnen, deuren en gevelelementen.</p>
                     </div>
                 </div>
 
-                <div class="gallery-item" data-category="binnen" data-aos="zoom-in" onclick="openLightbox('./image_4c70fd.jpg')">
-                    <div class="gallery-img" style="background-image: url('./image_4c70fd.jpg')"></div>
+                <div class="gallery-item" data-aos="fade-left" onclick="openLightbox('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80')">
+                    <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80')"></div>
                     <div class="gallery-info">
                         <h3>Binnenschilderwerk</h3>
-                        <p>Nauwkeurig sauswerk en perfecte wandafwerking binnenshuis.</p>
+                        <p>Strakke wandafwerking, sauswerk van plafonds en nauwkeurig schilderwerk binnenshuis.</p>
                     </div>
                 </div>
 
@@ -548,30 +576,12 @@
             <h2>Contact & Offerte</h2>
             <p class="section-subtitle">Vraag direct een vrijblijvende prijsopgave aan</p>
             <div class="contact-box">
-                
                 <div class="contact-sidebar">
                     <h3>Contactgegevens</h3>
-                    <p style="margin-bottom: 5px;">Heeft u vragen of wilt u een afspraak maken? Neem contact op via een van de onderstaande opties:</p>
-                    
-                    <div>
-                        <strong>📞 1. Telefoon:</strong><br>
-                        <a href="tel:+31654967900" class="info-link">+31 654 967 900</a>
-                    </div>
-                    
-                    <div>
-                        <strong>✉️ 2. E-mail:</strong><br>
-                        <a href="mailto:tomma.info@gmail.com" class="info-link">tomma.info@gmail.com</a>
-                    </div>
-                    
-                    <div>
-                        <strong>📍 3. Adres:</strong><br>
-                        <span>Verveenstraat 19, 2651EX Berkel en Rodenrijs</span>
-                    </div>
-
-                    <div>
-                        <strong>💼 4. Bedrijfsgegevens:</strong><br>
-                        <span>KvK: 84930211 | BTW: NL863402199B01</span>
-                    </div>
+                    <p style="margin-bottom: 25px;">Heeft u vragen of wilt u een afspraak maken? Neem direct contact op. Wij staan voor u klaar.</p>
+                    <p><strong>📞 Telefoon:</strong><br><a href="tel:+31654967900" class="info-link">+31 654 967 900</a></p><br>
+                    <p><strong>✉️ E-mail:</strong><br><a href="mailto:tomma.info@gmail.com" class="info-link">tomma.info@gmail.com</a></p><br>
+                    <p><strong>📍 Adres:</strong><br>Verveenstraat 19,<br>2651EX Berkel en Rodenrijs</p>
                 </div>
                  
                 <form class="contact-form" action="https://formspree.io/f/xojbbwzb" method="POST">
@@ -588,6 +598,15 @@
                         <input type="tel" name="phone" required placeholder="06 12345678">
                     </div>
                     <div class="form-group">
+                        <label>Type Werkzaamheid *</label>
+                        <select name="service">
+                            <option value="Buitenschilderwerk">Buitenschilderwerk</option>
+                            <option value="Binnenschilderwerk">Binnenschilderwerk</option>
+                            <option value="Behang en Stucwerk">Behang- & Stucwerk</option>
+                            <option value="Houtreparatie">Houtreparatie / Onderhoud</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label>Uw Bericht *</label>
                         <textarea name="message" rows="4" required placeholder="Beschrijf uw project..."></textarea>
                     </div>
@@ -598,17 +617,6 @@
 
     </div>
 
-    <div class="floating-call-btn" onclick="openModal()" title="Snel bellen">📞</div>
-
-    <div class="modal-overlay" id="contactModal" onclick="closeModal(event)">
-        <div class="quick-modal">
-            <span class="modal-close" onclick="closeModal(event, true)">&times;</span>
-            <h3>Snel een offerte?</h3>
-            <p>Wilt u direct een schilder spreken en uw wensen bespreken? Bel ons nu op voor een snelle prijsindicatie!</p>
-            <a href="tel:+31654967900" class="modal-call-btn">📞 Bel +31 654 967 900</a>
-        </div>
-    </div>
-
     <footer>
         <p>© 2026 Schildersbedrijf Berkel en Rodenrijs. Alle rechten voorbehouden.</p>
     </footer>
@@ -616,12 +624,16 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         // Inicjalizacja animacji AOS
-        AOS.init({ duration: 800, once: true });
+        AOS.init({
+            duration: 800, // czas trwania animacji w ms
+            once: true // animacja wykona się tylko raz przy pierwszym przewinięciu
+        });
 
         // Obsługa przełączania motywu Dark Mode
         const themeToggle = document.getElementById('themeToggle');
         themeToggle.addEventListener('click', () => {
-            if (document.body.getAttribute('data-theme') === 'dark') {
+            const currentTheme = document.body.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
                 document.body.removeAttribute('data-theme');
                 themeToggle.textContent = '🌙';
             } else {
@@ -630,65 +642,18 @@
             }
         });
 
-        // OBSŁUGA FILTROWANIA GALERII
-        function filterGallery(category) {
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            const items = document.querySelectorAll('.gallery-item');
-            items.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
-
-        // OBSŁUGA LIGHTBOX (POWIĘKSZANIE ZDJĘĆ)
+        // Obsługa interaktywnej galerii Lightbox
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
-        function openLightbox(url) { lightboxImg.src = url; lightbox.classList.add('active'); }
-        function closeLightbox() { lightbox.classList.remove('active'); }
 
-        // OBSŁUGA MODALA
-        const contactModal = document.getElementById('contactModal');
-        function openModal() { contactModal.classList.add('active'); }
-        function closeModal(e, force = false) {
-            if (e.target === contactModal || force) { contactModal.classList.remove('active'); }
+        function openLightbox(imgUrl) {
+            lightboxImg.src = imgUrl;
+            lightbox.classList.add('active');
         }
 
-        // OBSŁUGA ANIMOWANYCH STATYSTYK (COUNTER UP)
-        const counters = document.querySelectorAll('.counter');
-        const speed = 60;
-
-        const startCounters = () => {
-            counters.forEach(counter => {
-                const updateCount = () => {
-                    const target = +counter.getAttribute('data-target');
-                    const count = +counter.innerText;
-                    const inc = target / speed;
-
-                    if (count < target) {
-                        counter.innerText = Math.ceil(count + inc);
-                        setTimeout(updateCount, 25);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-                updateCount();
-            });
-        };
-
-        const sectionOverOns = document.getElementById('over-ons');
-        const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                startCounters();
-                observer.disconnect();
-            }
-        }, { threshold: 0.2 });
-        observer.observe(sectionOverOns);
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+        }
     </script>
 </body>
 </html>
